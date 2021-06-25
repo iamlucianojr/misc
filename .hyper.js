@@ -5,6 +5,7 @@
 module.exports = {
   config: {
     activeTab: '🚀',
+
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'canary',
@@ -13,7 +14,9 @@ module.exports = {
     fontSize: 12,
 
     // font family with optional fallbacks
-    fontFamily: 'Hack, Hack Nerd, Hack Mono',
+    // fontFamily: 'Hack, Hack Nerd, Hack Mono',
+    fontFamily: 'MesloLGS NF',
+    
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -143,10 +146,36 @@ module.exports = {
     hypercwd: {
       initialWorkingDirectory: '/var/www/'
     },
-      hyperTransparent: {
+
+    hyperTransparent: {
       backgroundColor: '#4b4',
-      opacity: 0.9,
+      opacity: 0.7,
       vibrancy: '' // ['', 'dark', 'medium-light', 'ultra-dark']
+    },
+
+    paneNavigation: {
+      debug: false,
+      hotkeys: {
+        navigation: {
+          up: 'ctrl+alt+up',
+          down: 'ctrl+alt+down',
+          left: 'ctrl+alt+left',
+          right: 'ctrl+alt+right'
+        },
+        jump_prefix: 'ctrl+alt', // completed with 1-9 digits
+        permutation_modifier: 'shift', // Added to jump and navigation hotkeys for pane permutation
+        maximize: 'meta+enter'
+      },
+      showIndicators: true, // Show pane number
+      indicatorPrefix: '\u039E', // Will be completed with pane number
+      indicatorStyle: { // Added to indicator <div>
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        fontSize: '10px'
+      },
+      focusOnMouseHover: false,
+      inactivePaneOpacity: 0.45  // Set to 1 to disable inactive panes dimming
     }
 
     // for advanced config flags please refer to https://hyper.is/#cfg
@@ -164,7 +193,8 @@ module.exports = {
     "hyper-blink",
     "hypercwd",
     "hyper-pane",
-    "hyper-active-tab"
+    "hyper-active-tab",
+    "hyperterm-paste"
   ],
 
   // in development, you can create a directory under

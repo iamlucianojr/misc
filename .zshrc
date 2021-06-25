@@ -1,15 +1,24 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+ZSH_DISABLE_COMPFIX="true"
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/luciano/.oh-my-zsh"
+export ZSH="/private/var/www/Sandbox/misc/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
-
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL9K_MODE="nerdfont-complete"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -69,7 +78,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew composer docker gatsby helm jump kubectl npm npx postgres symfony vagrant terraform vscode yarn zsh-syntax-highlighting dnf zsh-autosuggestions bgnotify)
+plugins=(git brew history history-substring-search composer docker gatsby helm jump kubectl postgres symfony vagrant terraform vscode yarn zsh-syntax-highlighting dnf zsh-completions zsh-autosuggestions bgnotify systemadmin)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,18 +113,32 @@ alias kongproxyip='export PROXY_IP=$(kubectl get -o jsonpath="{.status.loadBalan
 
 alias phpstorm='/Applications/PhpStorm.app/Contents/MacOS/phpstorm'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source  ~/powerlevel9k/powerlevel9k.zsh-theme
-# POWERLEVEL9K_MODE="nerdfont-complete"
+alias t='todo.sh'
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+alias ls='ls -G'                              # colorize `ls` output
+alias zshreload='source ~/.zshrc'             # reload ZSH
+alias shtop='sudo htop'                       # run `htop` with root rights
+alias grep='grep --color=auto'                # colorize `grep` output
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias less='less -R'
+alias g='git'
+
+alias rm='rm -i'                              # confirm removal
+alias cp='cp -i'                              # confirm copy
+alias mv='mv -i'                              # confirm move
+alias cal='gcal --starting-day=1'             # print simple calendar for current month
+alias weather='curl v2.wttr.in'               # print weather for current location (https://github.com/chubin/wttr.in)
 
 export GOPATH="/var/www/exads/go-stack"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib/pkgconfig/
 
 
-alias vscode="Visual\ Studio\ Code.app"
+alias vscode="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
