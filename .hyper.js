@@ -4,6 +4,7 @@
 
 module.exports = {
   config: {
+    activeTab: '🚀',
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: 'canary',
@@ -140,7 +141,7 @@ module.exports = {
     webGLRenderer: true,
 
     hypercwd: {
-      initialWorkingDirectory: '~/dev'
+      initialWorkingDirectory: '/var/www/'
     },
       hyperTransparent: {
       backgroundColor: '#4b4',
@@ -161,7 +162,9 @@ module.exports = {
     "hyper-material-theme",
     "hyperterm-dibdabs",
     "hyper-blink",
-    "hypercwd"
+    "hypercwd",
+    "hyper-pane",
+    "hyper-active-tab"
   ],
 
   // in development, you can create a directory under
